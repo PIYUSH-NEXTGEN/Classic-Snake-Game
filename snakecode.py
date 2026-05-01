@@ -1,4 +1,5 @@
 from turtle import Turtle
+import time
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
@@ -8,8 +9,9 @@ LEFT = 180
 RIGHT = 0
 
 class Snake:
-    def __init__(self):
+    def __init__(self, skin_color="white"):
         self.segments = []
+        self.skin_color = skin_color
         self.create_snake()
         self.head = self.segments[0]
 
@@ -19,13 +21,21 @@ class Snake:
 
     def add_segment(self, position):
         segment = Turtle("square")
-        segment.color("white")
+        segment.color(self.skin_color)
         segment.penup()
         segment.goto(position)
         self.segments.append(segment)
 
-    def extend(self):
+    def extend(self, animate=False):
         # Add new segment at the position of the last segment
+        if animate:
+            # Growth animation - scale up
+            new_segment = self.segments[-1]
+            original_size = 1.0
+            for scale in [1.2, 1.4, 1.2, 1.0]:
+                new_segment.shapesize(scale, scale)
+                time.sleep(0.05)
+        
         self.add_segment(self.segments[-1].position())
 
     def move_snake(self):

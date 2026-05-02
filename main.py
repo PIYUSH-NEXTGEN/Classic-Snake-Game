@@ -10,8 +10,8 @@ game_paused = False
 pause_display = None
 theme_colors = {
     "green": {"snake": "lime", "food": "red", "bg": "black"},
-    "blue": {"snake": "cyan", "food": "yellow", "bg": "navy"},
-    "purple": {"snake": "magenta", "food": "white", "bg": "indigo"}
+    "blue": {"snake": "cyan", "food": "yellow", "bg": "black"},
+    "purple": {"snake": "magenta", "food": "white", "bg": "black"}
 }
 
 def get_difficulty():
